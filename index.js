@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 });
 
 // '192.168.89.231'
-app.listen(PORT,'192.168.89.231', () => {
+app.listen(PORT, () => {
   console.log(`Server running on ${PORT}`);
 });
 
