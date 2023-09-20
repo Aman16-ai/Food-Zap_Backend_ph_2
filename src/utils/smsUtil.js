@@ -38,5 +38,5 @@ const sendMessage = async(number,message) => {
     
 };
 
-sendMessage("+918285866269","hi foodzap")
+// sendMessage("+918285866269","hi foodzap")
 module.exports = sendMessage
