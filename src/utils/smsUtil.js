@@ -1,5 +1,5 @@
 const twilio = require("twilio");
-
+const messageLogsSchema = require('../models/Logs/MessageLog')
 // const client = twilio(
 //   process.env.twilio_account_sid,
 //   process.env.twilio_auth_token
@@ -28,6 +28,7 @@ const sendMessage = async(number,message) => {
       to:number
     })
     console.log(result)
+    await messageLogsSchema.create({"message":JSON.stringify(result)})
     return result
   }
   catch(err) {
