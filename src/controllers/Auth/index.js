@@ -22,7 +22,7 @@ const handleAuthentication = async(req,res,next) => {
             const otp = generateOTP()
             console.log('otp------->',otp)
             const otp_obj = await Otp.create({userId:user_obj._id,otp:otp})
-            sendMessage(phoneNo,`${otp} is the OTP for FoodZap app verification`)
+            const result = await sendMessage(phoneNo,`${otp} is the OTP for FoodZap app verification`)
             return res.status(200).json({status:true,Response:user_obj})
         }
 
