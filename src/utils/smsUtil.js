@@ -39,5 +39,8 @@ const sendMessage = async(number,message) => {
 };
 
 // sendMessage("+918285866269","hi foodzap")
+/* The `//..` is a comment in JavaScript. It is used to indicate that there is more code or
+functionality that follows after the comment. In this case, it suggests that there may be additional
+code or module exports after the commented line. */
 //..
 module.exports = sendMessage
