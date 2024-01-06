@@ -6,13 +6,13 @@ const messageLogsSchema = require('../models/Logs/MessageLog')
 // );
 
 const client = twilio(
-  "AC9c5572b1664f0442c08d307cbb3ab8be",
-  "3bd8cef308455c6f76f8d21c25448383"
+  "AC9eeb2fe32c7c97641b5b07d6a27cc884",
+  "427943f6252bb6ea69527ff501610669"
 );
 
 const sendMessage = async(number,message) => {
   console.log("number : "+number," message : "+message)
-  const senderNumber = "+13612648897";
+  const senderNumber = "+15005550006";
   // const result = client.messages
   //   .create({
   //     body: message,

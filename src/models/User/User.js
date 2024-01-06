@@ -12,7 +12,16 @@ const userSchema = new mongoose.Schema({
   phoneNo: {
     type: String,
     require: true,
-  },   
+  }, 
+  admin : {
+    type:Boolean,
+    default:false
+  },  
+  user_type : {
+    type:String,
+    enum : ['genric','restaurant_owner','restaurant_manager','delivery'],
+    default: 'genric'
+  }
 });
 
 module.exports = mongoose.model("User", userSchema);
