@@ -7,8 +7,7 @@ const getUser = async(req,res,next) => {
         return res.status(200).json({status:true,Response:user})
     }
     catch(err) {
-        return res.status(500).json({status:false,Response:"Some internal server error"})
-        // next(err)
+        next(err)
     }
 }
 

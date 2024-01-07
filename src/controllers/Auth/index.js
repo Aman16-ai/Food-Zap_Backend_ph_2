@@ -3,6 +3,7 @@ const Otp = require("../../models/User/Otp")
 const sendMessage = require("../../utils/smsUtil")
 const generateOTP = require("../../utils/otpUtil")
 const jwt = require("jsonwebtoken")
+const ErrorProvider = require("../../Error/ErrorProvider")
 
 
 /*
@@ -34,16 +35,17 @@ const handleAuthentication = async(req,res,next) => {
 
     }
     catch(err) {
-        return res.status(500).json({status:false,Response:"Some internal server error"})
+        next(err)
     }
 }
 
-const verifyOtp = async(req,res) => {
+const verifyOtp = async(req,res,next) => {
     try {
         const {userId,otp} = req.body
         const otp_obj = await Otp.findOne({userId:userId,otp:otp})
         if(!otp_obj) {
-            return res.status(404).json({status:false,Response:"Failed to verify the otp"})
+            console.log("running this line")
+           throw new ErrorProvider(404,false,"Otp not found")
         }
         const data = {
             user : {
@@ -54,7 +56,7 @@ const verifyOtp = async(req,res) => {
         return res.status(200).json({status:true,Response:{token:token}})
     }
     catch(err) {
-        return res.status(500).json({status:false,Response:"Some internal server error"})
+        next(err)
     }
 }
 
