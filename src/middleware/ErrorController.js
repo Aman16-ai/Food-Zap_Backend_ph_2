@@ -4,7 +4,7 @@ const ErrorProvider = require("../Error/ErrorProvider")
 
 const ErrorController = (err,req,res,next) => {
     console.log("running error controller")
-    console.log(err.name)
+    console.log(err)
 
     if(err instanceof ErrorProvider) {
         console.log('running this also')

@@ -13,14 +13,22 @@ const userSchema = new mongoose.Schema({
     type: String,
     require: true,
   }, 
+  email: {
+    type:String,
+    default:null
+  },
   admin : {
     type:Boolean,
     default:false
   },  
   user_type : {
     type:String,
-    enum : ['genric','restaurant_owner','restaurant_manager','delivery'],
-    default: 'genric'
+    enum : ['customer','restaurant_owner','restaurant_manager','delivery'],
+    default: 'customer'
+  },
+  onBoarded: {
+    type:Boolean,
+    default : false
   }
 });
 
