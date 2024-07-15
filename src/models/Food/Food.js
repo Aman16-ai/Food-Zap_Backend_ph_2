@@ -20,6 +20,10 @@ const foodSchema = new mongoose.Schema({
     parentCategory : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "ParentCategory"
+    }, 
+    price : {
+        type : Number,
+        require:true
     }
 },{timestamps:true})
 

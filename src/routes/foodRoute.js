@@ -10,4 +10,6 @@ module.exports = (app) => {
       uploads.single("img"),
       createFood
     );
+
+  
 };

@@ -1,6 +1,6 @@
 const ErrorProvider = require("../../Error/ErrorProvider")
 const {Restaurant} = require("../../models/Restaurant/Restaurant")
-
+const RestaurantService = require("../../service/restaurant.service")
 const createRestaurant = async(req,res,next) => {
     try {
         const user = req.user
@@ -26,4 +26,30 @@ const getAllRestaurant = async(req,res,next) => {
     }
 }
 
-module.exports = {createRestaurant,getAllRestaurant}
+const getRestaurantCategoriesCount = async (req,res,next)=> {
+    try {
+        const restaurantService = new RestaurantService()
+        const result = await restaurantService.getCategoriesWithCount(req.params.restaurantId)
+        return res.status(200).json({
+            status:true,
+            Resposne : result
+        })
+    }
+    catch(err) {
+        next(err)
+    }
+}
+
+const getRestaurantById = async (req,res,next) => {
+    try {
+        const restaurant = await Restaurant.findById(req.params.restaurantId)
+        return res.status(200).json({
+            status:true,
+            Resposne : restaurant
+        })
+    }
+    catch(err) {
+        next(err)
+    }
+}
+module.exports = {createRestaurant,getAllRestaurant,getRestaurantCategoriesCount,getRestaurantById}
