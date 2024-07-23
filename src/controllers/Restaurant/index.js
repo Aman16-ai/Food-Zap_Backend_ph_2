@@ -5,7 +5,16 @@ const createRestaurant = async(req,res,next) => {
     try {
         const user = req.user
         const file = req.file.path
-        const obj = await Restaurant.create({...req.body,owner:user._id,image:file})
+        const openingDays = req.body.openingDays.split(',')
+        const closingDays = req.body.closingDays.split(',')
+        delete req.body['openingDays']
+        delete req.body['closingDays']
+        const obj = await Restaurant.create({...req.body,
+            owner:user._id,
+            image:file,
+            openingDays:openingDays,
+            closingDays:closingDays
+        })
         if(!obj) {
             throw new ErrorProvider(202,false,'Falied to create')
         }

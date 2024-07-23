@@ -30,6 +30,24 @@ const restaurantSchema = new mongoose.Schema({
     require: true,
     index:{unique:true}
   },
+  openingTime: {
+    type: String,
+    required: true,
+  },
+  openingDays: {
+    type: [String],
+    required: true,
+    enum: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+  },
+  closingTime: {
+    type: String,
+    required: true,
+  },
+  closingDays: {
+    type: [String],
+    required: true,
+    enum: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+  },
 });
 
 const Restaurant = mongoose.model("Restaurant", restaurantSchema);

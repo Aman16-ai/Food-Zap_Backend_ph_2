@@ -1,6 +1,7 @@
 const Food = require("../models/Food/Food");
 const mongoose = require("mongoose");
 class RestaurantService {
+
   async getCategoriesWithCount(restaurantID) {
     console.log(restaurantID);
     const categoriesCount = await Food.aggregate([

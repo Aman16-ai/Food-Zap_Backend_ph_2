@@ -1,4 +1,4 @@
-const { createFood } = require("../controllers/Food");
+const { createFood, getFood } = require("../controllers/Food");
 const { verifyResturantOwnerTokenMiddleware } = require("../middleware/auth");
 const uploads = require("../middleware/uploadMediaMiddlware");
 
@@ -9,7 +9,9 @@ module.exports = (app) => {
       verifyResturantOwnerTokenMiddleware,
       uploads.single("img"),
       createFood
-    );
+    ).get(getFood);
+  
+  
 
   
 };

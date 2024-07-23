@@ -29,5 +29,18 @@ const createFood = async(req,res,next) => {
 }
 
 
+const getFood = async (req,res,next) => {
+    try {
+        const food = await Food.find(req.query)
+        return res.status(200).json({
+            status:true,
+            Resposne : food
+        })
+    }
+    catch(err) {
+        next(err)
+    }
+}
 
-module.exports = {createFood}
+
+module.exports = {createFood,getFood}
